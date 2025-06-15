@@ -1,54 +1,66 @@
 
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Hero = () => {
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center pt-16 px-4">
-      <div className="max-w-6xl mx-auto text-center">
-        <div className="animate-fade-in">
+    <section id="home" className="min-h-screen flex items-center justify-center pt-16 px-4 relative overflow-hidden">
+      {/* Animated Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-blue-900/20 dark:to-purple-900/20">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-300/30 dark:bg-blue-600/20 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+        <div className="absolute top-40 right-10 w-72 h-72 bg-purple-300/30 dark:bg-purple-600/20 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300/30 dark:bg-pink-600/20 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+      </div>
+      
+      <div className="max-w-6xl mx-auto text-center relative z-10">
+        <div className="animate-fade-in-up">
           <div className="mb-8">
-            <div className="w-32 h-32 mx-auto mb-8 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white text-4xl font-bold shadow-2xl">
+            <div className="w-32 h-32 mx-auto mb-8 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 flex items-center justify-center text-white text-4xl font-bold shadow-2xl animate-float hover:scale-110 transition-transform duration-300">
               B
             </div>
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-text-reveal">
+            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-gradient-x">
               Bilal
             </span>
           </h1>
           
-          <h2 className="text-2xl md:text-3xl font-semibold text-gray-700 mb-6">
+          <h2 className="text-2xl md:text-3xl font-semibold text-gray-700 dark:text-gray-300 mb-6 animate-slide-in-left animation-delay-500">
             Computer Science & Engineering Student
           </h2>
           
-          <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-3xl mx-auto leading-relaxed animate-slide-in-right animation-delay-700">
             Passionate about creating innovative solutions through code. Dedicated to learning cutting-edge technologies 
             and building impactful software that makes a difference.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <Button size="lg" className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-3 rounded-full transition-all duration-300 hover:scale-105">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 animate-slide-in-up animation-delay-1000">
+            <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg group">
               <a href="#contact" className="flex items-center gap-2">
                 Get In Touch
-                <Mail size={18} />
+                <Mail size={18} className="group-hover:rotate-12 transition-transform duration-200" />
               </a>
             </Button>
             
+            <Button variant="outline" size="lg" className="rounded-full hover:scale-105 transition-all duration-300 group border-purple-200 dark:border-purple-800">
+              <Download size={18} className="mr-2 group-hover:bounce transition-transform duration-200" />
+              Download CV
+            </Button>
+            
             <div className="flex gap-4">
-              <Button variant="outline" size="lg" className="rounded-full hover:scale-105 transition-all duration-300">
-                <Github size={20} />
+              <Button variant="outline" size="lg" className="rounded-full hover:scale-110 transition-all duration-300 hover:bg-blue-50 dark:hover:bg-blue-900/20 group">
+                <Github size={20} className="group-hover:rotate-12 transition-transform duration-200" />
               </Button>
-              <Button variant="outline" size="lg" className="rounded-full hover:scale-105 transition-all duration-300">
-                <Linkedin size={20} />
+              <Button variant="outline" size="lg" className="rounded-full hover:scale-110 transition-all duration-300 hover:bg-blue-50 dark:hover:bg-blue-900/20 group">
+                <Linkedin size={20} className="group-hover:rotate-12 transition-transform duration-200" />
               </Button>
             </div>
           </div>
           
-          <div className="animate-bounce">
-            <a href="#about">
-              <ArrowDown size={32} className="text-blue-600 mx-auto" />
+          <div className="animate-bounce-slow animation-delay-1500">
+            <a href="#about" className="inline-block hover:scale-110 transition-transform duration-200">
+              <ArrowDown size={32} className="text-blue-600 dark:text-blue-400 mx-auto" />
             </a>
           </div>
         </div>
