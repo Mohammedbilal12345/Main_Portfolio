@@ -1,223 +1,143 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter } from "lucide-react";
-import { useState } from "react";
-import { useToast } from "@/hooks/use-toast";
+import { Mail, Phone, MapPin, Github, Linkedin } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: ""
-  });
-  
-  const { toast } = useToast();
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Simulate form submission
-    toast({
-      title: "Message sent!",
-      description: "Thank you for your message. I'll get back to you soon!",
-    });
-    
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: ""
-    });
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
-  };
-
   const contactInfo = [
     {
       icon: Mail,
       title: "Email",
-      value: "bilal@example.com",
-      link: "mailto:bilal@example.com"
+      value: "mohammedbilal96654@gmail.com",
+      link: "mailto:mohammedbilal96654@gmail.com",
     },
     {
       icon: Phone,
       title: "Phone",
-      value: "+91 12345 67890",
-      link: "tel:+911234567890"
+      value: "+91 93707 78994",
+      link: "tel:+919370778994",
     },
     {
       icon: MapPin,
       title: "Location",
-      value: "Mumbai, India",
-      link: "#"
-    }
+      value: "Bengaluru, India",
+      link: "#",
+    },
   ];
 
   const socialLinks = [
-    { icon: Github, link: "#", label: "GitHub" },
-    { icon: Linkedin, link: "#", label: "LinkedIn" },
-    { icon: Twitter, link: "#", label: "Twitter" }
+    {
+      icon: Github,
+      link: "https://github.com/Mohammedbilal12345",
+      label: "GitHub – Projects & Code",
+    },
+    {
+      icon: Linkedin,
+      link: "https://www.linkedin.com/in/mohammed-bilal-23678328a/",
+      label: "LinkedIn – Professional Profile",
+    },
+    {
+      icon: () => <span className="text-xl">🏅</span>,
+      link: "https://www.hackerrank.com/profile/PES2UG23CS344",
+      label: "HackerRank – Coding Badges",
+    },
+    {
+      icon: () => <span className="text-xl">🧠</span>,
+      link: "https://leetcode.com/u/mohammedbilal97/",
+      label: "LeetCode – DSA Practice",
+    },
+    {
+      icon: () => <span className="text-xl">📷</span>,
+      link: "https://www.instagram.com/b.i_la.l",
+      label: "Instagram – Personal Life",
+    },
   ];
 
+  const titles = [
+    "Full Stack Developer 💻",
+    "Problem Solver 🧠",
+    "Dream Chaser 🚀",
+    "Tech Lover ⚙️",
+  ];
+  const [currentTitle, setCurrentTitle] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTitle((prev) => (prev + 1) % titles.length);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section id="contact" className="py-20 px-4 bg-white/50">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-            Get In Touch
+    <section id="contact" className="py-20 px-4 bg-white/60 dark:bg-gray-800/60 backdrop-blur-md">
+      <div className="max-w-4xl mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-600 bg-clip-text text-transparent animate-pulse">
+            Let's Connect ✨
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mb-8"></div>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            Have a project in mind or want to collaborate? I'd love to hear from you!
+          <p className="text-lg font-mono text-blue-700 dark:text-indigo-300 transition-all duration-500">
+            {titles[currentTitle]}
+          </p>
+          <p className="text-gray-600 dark:text-gray-400 text-base mt-4 max-w-xl mx-auto">
+            {/* I'm Mohammed Bilal — a CSE student, web developer, and tech explorer. Always building, always learning, always dreaming big. */}
           </p>
         </div>
-        
-        <div className="grid lg:grid-cols-3 gap-8">
-          {/* Contact Form */}
-          <div className="lg:col-span-2">
-            <Card className="border-0 shadow-xl">
-              <CardHeader>
-                <CardTitle className="text-2xl font-semibold text-gray-800">Send a Message</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                        Full Name
-                      </label>
-                      <Input
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        placeholder="Your full name"
-                        required
-                        className="border-gray-300 focus:border-blue-500"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                        Email Address
-                      </label>
-                      <Input
-                        id="email"
-                        name="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder="your.email@example.com"
-                        required
-                        className="border-gray-300 focus:border-blue-500"
-                      />
-                    </div>
-                  </div>
-                  
+
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* Contact Info */}
+          <Card className="border-0 shadow-xl bg-white dark:bg-gray-900 hover:shadow-blue-300 dark:hover:shadow-indigo-600 transition-all duration-300">
+            <CardHeader>
+              <CardTitle className="text-xl font-semibold text-gray-800 dark:text-gray-100">📫 Contact Info</CardTitle>
+            </CardHeader>
+            <CardContent>
+              {contactInfo.map((info, i) => (
+                <a
+                  key={i}
+                  href={info.link}
+                  className="flex items-center gap-4 p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all"
+                >
+                  <info.icon size={20} className="text-blue-600" />
                   <div>
-                    <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
-                      Subject
-                    </label>
-                    <Input
-                      id="subject"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      placeholder="What's this about?"
-                      required
-                      className="border-gray-300 focus:border-blue-500"
-                    />
+                    <p className="font-medium text-gray-800 dark:text-gray-200">{info.title}</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">{info.value}</p>
                   </div>
-                  
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                      Message
-                    </label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      placeholder="Tell me about your project or idea..."
-                      rows={5}
-                      required
-                      className="border-gray-300 focus:border-blue-500"
-                    />
-                  </div>
-                  
-                  <Button 
-                    type="submit" 
-                    size="lg" 
-                    className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 hover:scale-105"
-                  >
-                    <Send size={18} className="mr-2" />
-                    Send Message
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
-          </div>
-          
-          {/* Contact Information */}
-          <div className="space-y-6">
-            <Card className="border-0 shadow-xl">
-              <CardHeader>
-                <CardTitle className="text-xl font-semibold text-gray-800">Contact Information</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {contactInfo.map((info, index) => (
+                </a>
+              ))}
+            </CardContent>
+          </Card>
+
+          {/* Socials */}
+          <Card className="border-0 shadow-xl bg-white dark:bg-gray-900 hover:shadow-purple-300 dark:hover:shadow-purple-700 transition-all duration-300">
+            <CardHeader>
+              <CardTitle className="text-xl font-semibold text-gray-800 dark:text-gray-100">🌐 Find Me Online</CardTitle>
+              <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
+                From open-source to DSA, I’m always pushing pixels and solving puzzles.
+              </p>
+            </CardHeader>
+            <CardContent>
+              <div className="flex flex-col gap-4">
+                {socialLinks.map((social, i) => (
                   <a
-                    key={index}
-                    href={info.link}
-                    className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors group"
+                    key={i}
+                    href={social.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 p-3 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors"
                   >
-                    <div className="p-2 bg-blue-100 rounded-lg group-hover:bg-blue-200 transition-colors">
-                      <info.icon size={20} className="text-blue-600" />
-                    </div>
-                    <div>
-                      <p className="font-medium text-gray-800">{info.title}</p>
-                      <p className="text-sm text-gray-600">{info.value}</p>
-                    </div>
+                    <social.icon />
+                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{social.label}</span>
                   </a>
                 ))}
-              </CardContent>
-            </Card>
-            
-            <Card className="border-0 shadow-xl">
-              <CardHeader>
-                <CardTitle className="text-xl font-semibold text-gray-800">Follow Me</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex gap-3">
-                  {socialLinks.map((social, index) => (
-                    <a
-                      key={index}
-                      href={social.link}
-                      className="p-3 bg-gray-100 rounded-lg hover:bg-blue-100 transition-colors group"
-                      aria-label={social.label}
-                    >
-                      <social.icon size={20} className="text-gray-600 group-hover:text-blue-600 transition-colors" />
-                    </a>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
-        
-        {/* Footer */}
-        <div className="mt-16 pt-8 border-t border-gray-200 text-center">
-          <p className="text-gray-600">
-            © 2024 Bilal. Built with passion using React and Tailwind CSS.
+
+        <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-700 text-center">
+          <p className="text-gray-600 dark:text-gray-400">
+            © 2025 Bilal • Crafted with 💙 using React & Tailwind  
+          </p>
+          <p className="text-sm text-gray-400 dark:text-gray-500 mt-1 italic">
+            Fueled by caffeine & curiosity ☕💡
           </p>
         </div>
       </div>

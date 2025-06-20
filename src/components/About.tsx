@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import { Code, Brain, Users, Target } from "lucide-react";
 
@@ -7,61 +6,78 @@ const About = () => {
     {
       icon: Code,
       title: "Full-Stack Development",
-      description: "Proficient in modern web technologies and frameworks"
+      description: "Proficient in building end-to-end scalable web applications",
     },
     {
       icon: Brain,
-      title: "Problem Solving",
-      description: "Strong analytical skills with focus on efficient solutions"
+      title: "Machine Learning Enthusiast",
+      description: "Actively exploring AI, ML, and data-driven technologies",
     },
     {
       icon: Users,
       title: "Team Collaboration",
-      description: "Excellent communication and teamwork abilities"
+      description: "Skilled in working with diverse teams and cross-functional roles",
     },
     {
       icon: Target,
-      title: "Goal-Oriented",
-      description: "Dedicated to achieving excellence in every project"
-    }
+      title: "SDE Aspirant",
+      description: "Focused on writing clean, efficient, and production-ready code",
+    },
   ];
 
   return (
-    <section id="about" className="py-20 px-4 bg-white/50 dark:bg-gray-800/50 transition-colors duration-300">
+    <section
+      id="about"
+      className="py-20 px-4 bg-white/50 dark:bg-gray-800/50 transition-colors duration-300"
+    >
       <div className="max-w-6xl mx-auto">
+        {/* Section Heading */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent animate-fade-in-up">
             About Me
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-8 animate-slide-in-left"></div>
         </div>
-        
+
+        {/* Main Grid */}
         <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+          {/* Left Side - Bio */}
           <div className="animate-slide-in-left">
-            <h3 className="text-2xl font-semibold mb-6 text-gray-800 dark:text-gray-200">Hello! I'm Bilal</h3>
+            <h3 className="text-2xl font-semibold mb-6 text-gray-800 dark:text-gray-200">
+              Hello! I'm Mohammed Bilal
+            </h3>
             <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
-              I'm a passionate Computer Science & Engineering student with a strong foundation in software development 
-              and a keen interest in emerging technologies. My journey in tech began with curiosity about how things work, 
-              and has evolved into a deep commitment to creating meaningful digital solutions.
+              I’m a driven Computer Science & Engineering student at PES University with a clear vision — to become a skilled Software Development Engineer and create intelligent, scalable systems that solve real-world problems.
             </p>
             <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
-              Currently pursuing my degree in CSE, I'm constantly expanding my knowledge in areas like web development, 
-              data structures, algorithms, and software engineering principles. I believe in writing clean, efficient code 
-              and following best practices in every project I undertake.
+              My technical journey includes full-stack web development, system design, and building clean, robust applications using modern frameworks. Alongside this, I’m deeply interested in Machine Learning and continuously explore how AI can be integrated into everyday tech.
+            </p>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+              I enjoy learning new technologies, solving algorithmic challenges, and participating in hackathons to push my creative limits. From building production-ready projects for clients to developing personal web experiences, I approach each project with dedication and precision.
             </p>
             <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-              When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, 
-              or learning about the latest trends in artificial intelligence and machine learning.
+              I believe in continuous growth, meaningful collaboration, and writing code that not only works — but matters. Whether it's for a user-facing product or a machine learning pipeline, I strive to build solutions that make a difference.
             </p>
           </div>
-          
+
+          {/* Right Side - Highlights */}
           <div className="grid grid-cols-2 gap-6 animate-slide-in-right">
             {highlights.map((item, index) => (
-              <Card key={index} className="hover:shadow-xl transition-all duration-300 hover:scale-105 hover:-translate-y-2 group border-0 shadow-lg bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
+              <Card
+                key={index}
+                className="hover:shadow-[0_0_25px_rgba(99,102,241,0.4)] transition-all duration-300 hover:scale-105 hover:-translate-y-2 border-0 shadow-md bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm group"
+              >
                 <CardContent className="p-6 text-center">
-                  <item.icon size={40} className="text-blue-600 dark:text-blue-400 mx-auto mb-4 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300" />
-                  <h4 className="font-semibold mb-2 text-gray-800 dark:text-gray-200">{item.title}</h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">{item.description}</p>
+                  <item.icon
+                    size={40}
+                    className="text-blue-600 dark:text-blue-400 mx-auto mb-4 group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-300"
+                  />
+                  <h4 className="font-semibold mb-2 text-gray-800 dark:text-gray-200 group-hover:text-blue-600 transition-colors">
+                    {item.title}
+                  </h4>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    {item.description}
+                  </p>
                 </CardContent>
               </Card>
             ))}
