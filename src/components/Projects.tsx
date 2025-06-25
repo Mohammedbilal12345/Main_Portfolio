@@ -5,7 +5,7 @@ import { ExternalLink, Github, Code } from "lucide-react";
 const Projects = () => {
   const projects = [
     {
-      title: "S\u00e9curit\u00e9 System",
+      title: "Sécurité System",
       description:
         "A full-stack e-commerce website focused on security systems, with seamless payment, secure authentication, and modern UI.",
       technologies: [
@@ -99,11 +99,25 @@ const Projects = () => {
       github: "https://github.com/Mohammedbilal12345/CLASSROOM_NETWORKING",
     },
     {
-      title: "Team Banalo (Coming Soon)",
+      title: "Team Banalo",
       description:
-        "Hackathon team builder with real-time collaboration features and Firebase integration.",
-      technologies: ["React.js", "Tailwind CSS", "Firebase"],
-      github: "https://github.com/Mohammedbilal12345",
+        "A real-time collaborative platform for hackathon participants to form teams, manage projects, and communicate seamlessly.",
+      technologies: [
+        "React",
+        "TypeScript",
+        "Vite",
+        "ESLint",
+        "React Hook Form",
+        "Zod",
+        "Python",
+        "FastAPI",
+        "Pydantic",
+        "Supabase",
+        "LangChain",
+        "Docker",
+      ],
+      github: "https://github.com/Mohammedbilal12345/TeamBanalo",
+      demo: "https://teambanalo-frontend.onrender.com/",
     },
   ];
 
